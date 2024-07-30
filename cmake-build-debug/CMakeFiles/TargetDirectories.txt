@@ -1,0 +1,3 @@
+/home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/cmake-build-debug/CMakeFiles/prompt_invaders.dir
+/home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/cmake-build-debug/CMakeFiles/rebuild_cache.dir

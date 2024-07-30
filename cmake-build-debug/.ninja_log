@@ -1,0 +1,9 @@
+# ninja log v5
+783	853	1722370473345007038	CMakeFiles/prompt_invaders.dir/start.c.o	5b49040aa9ef135a
+782	876	1722370473349007260	CMakeFiles/prompt_invaders.dir/main.c.o	64c748be9c1687fe
+784	878	1722370473365008154	CMakeFiles/prompt_invaders.dir/typewriter.c.o	aae485c82beda58b
+855	891	1722370473377008824	CMakeFiles/prompt_invaders.dir/globals.c.o	94a473048d8b14d6
+878	949	1722370473437012175	CMakeFiles/prompt_invaders.dir/utilities.c.o	f2b856436e426904
+877	950	1722370473445012621	CMakeFiles/prompt_invaders.dir/menu.c.o	2156b2ef0ffad71c
+891	995	1722370473489015078	CMakeFiles/prompt_invaders.dir/iohandler.c.o	80a83f60832b9a9f
+996	1035	1722370473529017311	prompt_invaders	55d8885f9019a77c
