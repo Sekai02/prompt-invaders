@@ -7,3 +7,6 @@
 877	950	1722370473445012621	CMakeFiles/prompt_invaders.dir/menu.c.o	2156b2ef0ffad71c
 891	995	1722370473489015078	CMakeFiles/prompt_invaders.dir/iohandler.c.o	80a83f60832b9a9f
 996	1035	1722370473529017311	prompt_invaders	55d8885f9019a77c
+25	328	1722440042491627428	CMakeFiles/prompt_invaders.dir/start.c.o	5b49040aa9ef135a
+26	403	1722440042563634369	CMakeFiles/prompt_invaders.dir/iohandler.c.o	80a83f60832b9a9f
+403	877	1722440043039680264	prompt_invaders	55d8885f9019a77c
