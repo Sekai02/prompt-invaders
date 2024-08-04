@@ -55,17 +55,17 @@ build CMakeFiles/prompt_invaders.dir/main.c.o: C_COMPILER__prompt_invaders_unsca
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
 
-build CMakeFiles/prompt_invaders.dir/start.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/start.c || cmake_object_order_depends_target_prompt_invaders
-  DEP_FILE = CMakeFiles/prompt_invaders.dir/start.c.o.d
+build CMakeFiles/prompt_invaders.dir/scenes/start.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/start.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/start.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
-  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
 
-build CMakeFiles/prompt_invaders.dir/typewriter.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/typewriter.c || cmake_object_order_depends_target_prompt_invaders
-  DEP_FILE = CMakeFiles/prompt_invaders.dir/typewriter.c.o.d
+build CMakeFiles/prompt_invaders.dir/system/typewriter.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/typewriter.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/system/typewriter.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
-  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/system
 
 build CMakeFiles/prompt_invaders.dir/globals.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/globals.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/globals.c.o.d
@@ -73,23 +73,41 @@ build CMakeFiles/prompt_invaders.dir/globals.c.o: C_COMPILER__prompt_invaders_un
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
 
-build CMakeFiles/prompt_invaders.dir/menu.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/menu.c || cmake_object_order_depends_target_prompt_invaders
-  DEP_FILE = CMakeFiles/prompt_invaders.dir/menu.c.o.d
+build CMakeFiles/prompt_invaders.dir/scenes/menu.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/menu.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/menu.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
-  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
 
-build CMakeFiles/prompt_invaders.dir/utilities.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/utilities.c || cmake_object_order_depends_target_prompt_invaders
-  DEP_FILE = CMakeFiles/prompt_invaders.dir/utilities.c.o.d
+build CMakeFiles/prompt_invaders.dir/system/utilities.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/utilities.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/system/utilities.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
-  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/system
 
-build CMakeFiles/prompt_invaders.dir/iohandler.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/iohandler.c || cmake_object_order_depends_target_prompt_invaders
-  DEP_FILE = CMakeFiles/prompt_invaders.dir/iohandler.c.o.d
+build CMakeFiles/prompt_invaders.dir/system/iohandler.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/iohandler.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/system/iohandler.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
-  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/system
+
+build CMakeFiles/prompt_invaders.dir/scenes/game.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/game.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/game.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
+
+build CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/data_structures/matrix.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/data_structures
+
+build CMakeFiles/prompt_invaders.dir/data_structures/shot_linkedlist.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/data_structures/shot_linkedlist.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/data_structures/shot_linkedlist.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/data_structures
 
 
 # =============================================================================
@@ -99,7 +117,7 @@ build CMakeFiles/prompt_invaders.dir/iohandler.c.o: C_COMPILER__prompt_invaders_
 #############################################
 # Link the executable prompt_invaders
 
-build prompt_invaders: C_EXECUTABLE_LINKER__prompt_invaders_Debug CMakeFiles/prompt_invaders.dir/main.c.o CMakeFiles/prompt_invaders.dir/start.c.o CMakeFiles/prompt_invaders.dir/typewriter.c.o CMakeFiles/prompt_invaders.dir/globals.c.o CMakeFiles/prompt_invaders.dir/menu.c.o CMakeFiles/prompt_invaders.dir/utilities.c.o CMakeFiles/prompt_invaders.dir/iohandler.c.o
+build prompt_invaders: C_EXECUTABLE_LINKER__prompt_invaders_Debug CMakeFiles/prompt_invaders.dir/main.c.o CMakeFiles/prompt_invaders.dir/scenes/start.c.o CMakeFiles/prompt_invaders.dir/system/typewriter.c.o CMakeFiles/prompt_invaders.dir/globals.c.o CMakeFiles/prompt_invaders.dir/scenes/menu.c.o CMakeFiles/prompt_invaders.dir/system/utilities.c.o CMakeFiles/prompt_invaders.dir/system/iohandler.c.o CMakeFiles/prompt_invaders.dir/scenes/game.c.o CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o CMakeFiles/prompt_invaders.dir/data_structures/shot_linkedlist.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   POST_BUILD = :

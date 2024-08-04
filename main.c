@@ -1,9 +1,10 @@
 #include "globals.h"
-#include "typewriter.h"
-#include "utilities.h"
-#include "iohandler.h"
-#include "start.h"
-#include "menu.h"
+#include "system/typewriter.h"
+#include "system/utilities.h"
+#include "system/iohandler.h"
+#include "scenes/start.h"
+#include "scenes/menu.h"
+#include "scenes/game.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,18 +46,19 @@ void switchScene(Scene newScene){
 }
 
 void startMessage() {
-    drawStartMessage();
+    //drawStartMessage();
     switchScene(SCENE_MAIN_MENU);
 }
 
 void mainMenu(){
     menuSelection();
-    getchar();
+    //getchar();
     switchScene(SCENE_GAME);
 }
 
 void game(){
-
+    runGame();
+    getchar();
 }
 
 void gameOver(){

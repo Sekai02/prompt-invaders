@@ -1,7 +1,7 @@
 #include "menu.h"
-#include "typewriter.h"
-#include "utilities.h"
-#include "iohandler.h"
+#include "../system/typewriter.h"
+#include "../system/utilities.h"
+#include "../system/iohandler.h"
 
 #include <stdlib.h>
 #include <stdio.h>

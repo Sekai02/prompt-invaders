@@ -1,6 +1,6 @@
 #include "start.h"
-#include "typewriter.h"
-#include "iohandler.h"
+#include "../system/typewriter.h"
+#include "../system/iohandler.h"
 
 #include <unistd.h>
 #include <stdio.h>
