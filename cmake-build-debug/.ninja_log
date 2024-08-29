@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 878	949	1722370473437012175	CMakeFiles/prompt_invaders.dir/utilities.c.o	f2b856436e426904
 2	41	1722729236234367740	CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o	ade774b497ba2aef
 2	53	1722727566736956028	CMakeFiles/prompt_invaders.dir/scenes/start.c.o	ecf4d568c708885e
@@ -68,3 +69,17 @@
 783	830	1722742748250570395	prompt_invaders	1c6869529d7cf60c
 3	51	1722742812713697623	CMakeFiles/prompt_invaders.dir/scenes/game.c.o	eaca88dfac9b6f7c
 52	95	1722742812757699758	prompt_invaders	1c6869529d7cf60c
+=======
+2	50	1724952921969927463	CMakeFiles/prompt_invaders.dir/scenes/gameover.c.o	96e515aa20f93e74
+3	115	1724960315998599401	CMakeFiles/prompt_invaders.dir/scenes/start.c.o	bc76acbf84e86d12
+64	145	1724960316032605434	CMakeFiles/prompt_invaders.dir/system/gamestate.c.o	ad43bc5608a366cf
+24	918	1724526143027655062	CMakeFiles/prompt_invaders.dir/system/iohandler.c.o	d1723c7a520aee44
+2	34	1724963691665024631	build.ninja	786be508dc3ddf15
+2	64	1724960315967593896	CMakeFiles/prompt_invaders.dir/main.c.o	80c4a50469f5117d
+109	158	1724963497810378143	prompt_invaders	28bcedd755c99a62
+25	807	1724526142917656104	CMakeFiles/prompt_invaders.dir/system/typewriter.c.o	11afa2c52e9a716a
+598	834	1724526142944655847	CMakeFiles/prompt_invaders.dir/system/utilities.c.o	110c26f034340885
+2	165	1724954362534841044	CMakeFiles/prompt_invaders.dir/scenes/menu.c.o	13fe67935eb43d46
+65	322	1724528213989919478	CMakeFiles/prompt_invaders.dir/ds/shot_linkedlist.c.o	eef1dfcc1a151642
+2	109	1724963497761374186	CMakeFiles/prompt_invaders.dir/scenes/game.c.o	2631e79f2e75ee08
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))

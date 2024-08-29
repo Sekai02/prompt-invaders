@@ -55,12 +55,22 @@ build CMakeFiles/prompt_invaders.dir/main.c.o: C_COMPILER__prompt_invaders_unsca
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
 
+<<<<<<< HEAD
+=======
+build CMakeFiles/prompt_invaders.dir/scenes/game.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/game.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/game.c.o.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/prompt_invaders.dir
+  OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
+
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
 build CMakeFiles/prompt_invaders.dir/scenes/start.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/start.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/start.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
 
+<<<<<<< HEAD
 build CMakeFiles/prompt_invaders.dir/system/typewriter.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/typewriter.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/system/typewriter.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
@@ -73,18 +83,26 @@ build CMakeFiles/prompt_invaders.dir/globals.c.o: C_COMPILER__prompt_invaders_un
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir
 
+=======
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
 build CMakeFiles/prompt_invaders.dir/scenes/menu.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/menu.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/menu.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
 
+<<<<<<< HEAD
 build CMakeFiles/prompt_invaders.dir/system/utilities.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/utilities.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/system/utilities.c.o.d
+=======
+build CMakeFiles/prompt_invaders.dir/system/gamestate.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/gamestate.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/system/gamestate.c.o.d
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/system
 
+<<<<<<< HEAD
 build CMakeFiles/prompt_invaders.dir/system/iohandler.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/system/iohandler.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/system/iohandler.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
@@ -93,10 +111,15 @@ build CMakeFiles/prompt_invaders.dir/system/iohandler.c.o: C_COMPILER__prompt_in
 
 build CMakeFiles/prompt_invaders.dir/scenes/game.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/game.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/game.c.o.d
+=======
+build CMakeFiles/prompt_invaders.dir/scenes/gameover.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/scenes/gameover.c || cmake_object_order_depends_target_prompt_invaders
+  DEP_FILE = CMakeFiles/prompt_invaders.dir/scenes/gameover.c.o.d
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/scenes
 
+<<<<<<< HEAD
 build CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o: C_COMPILER__prompt_invaders_unscanned_Debug /home/sekai02/Documents/School/2do/SO/proyecto/prompt-invaders/data_structures/matrix.c || cmake_object_order_depends_target_prompt_invaders
   DEP_FILE = CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
@@ -109,6 +132,8 @@ build CMakeFiles/prompt_invaders.dir/data_structures/shot_linkedlist.c.o: C_COMP
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   OBJECT_FILE_DIR = CMakeFiles/prompt_invaders.dir/data_structures
 
+=======
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
 
 # =============================================================================
 # Link build statements for EXECUTABLE target prompt_invaders
@@ -117,8 +142,14 @@ build CMakeFiles/prompt_invaders.dir/data_structures/shot_linkedlist.c.o: C_COMP
 #############################################
 # Link the executable prompt_invaders
 
+<<<<<<< HEAD
 build prompt_invaders: C_EXECUTABLE_LINKER__prompt_invaders_Debug CMakeFiles/prompt_invaders.dir/main.c.o CMakeFiles/prompt_invaders.dir/scenes/start.c.o CMakeFiles/prompt_invaders.dir/system/typewriter.c.o CMakeFiles/prompt_invaders.dir/globals.c.o CMakeFiles/prompt_invaders.dir/scenes/menu.c.o CMakeFiles/prompt_invaders.dir/system/utilities.c.o CMakeFiles/prompt_invaders.dir/system/iohandler.c.o CMakeFiles/prompt_invaders.dir/scenes/game.c.o CMakeFiles/prompt_invaders.dir/data_structures/matrix.c.o CMakeFiles/prompt_invaders.dir/data_structures/shot_linkedlist.c.o
   FLAGS = -g
+=======
+build prompt_invaders: C_EXECUTABLE_LINKER__prompt_invaders_Debug CMakeFiles/prompt_invaders.dir/main.c.o CMakeFiles/prompt_invaders.dir/scenes/game.c.o CMakeFiles/prompt_invaders.dir/scenes/start.c.o CMakeFiles/prompt_invaders.dir/scenes/menu.c.o CMakeFiles/prompt_invaders.dir/system/gamestate.c.o CMakeFiles/prompt_invaders.dir/scenes/gameover.c.o
+  FLAGS = -g
+  LINK_LIBRARIES = -lncurses
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
   OBJECT_DIR = CMakeFiles/prompt_invaders.dir
   POST_BUILD = :
   PRE_LINK = :

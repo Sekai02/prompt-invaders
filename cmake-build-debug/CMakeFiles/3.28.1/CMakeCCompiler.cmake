@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 set(CMAKE_C_COMPILER "/usr/bin/cc")
+=======
+set(CMAKE_C_COMPILER "/usr/bin/gcc")
+>>>>>>> 19b9a75 (mpv-finished (IO, threads & scheduling))
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "11.4.0")

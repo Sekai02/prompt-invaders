@@ -1,38 +1,66 @@
-#include "start.h"
-#include "../system/typewriter.h"
-#include "../system/iohandler.h"
-
 #include <unistd.h>
-#include <stdio.h>
+#include <ncurses.h>
+#include <string.h>
 
-void drawStartMessage(){
-    enableRawMode();
-    typeTextWithSound("Welcome soldier!\n");
+#include "start.h"
+
+#define CHARACTER_DELAY 50000
+
+void drawTextLetterByLetter(const char *text)
+{
+    // Get screen dimensions
+    int cols = COLS;
+    int lines = LINES;
+
+    // Center coordinates for bottom of screen
+    int x = COLS / 2 - strlen(text) / 2;
+    int y = LINES / 2;
+
+    // Clear the screen
+    clear();
+
+    // Set cursor position
+    move(y, x);
+
+    // Draw characters one by one with delay and beep
+    for (int i = 0; text[i]; i++)
+    {
+        addch(text[i]);
+        refresh();
+        usleep(CHARACTER_DELAY); // 500ms delay between each character
+        beep();
+    }
+}
+
+void drawStartMessage()
+{
+    // Initialize ncurses
+    initscr();
+    cbreak();
+    noecho();
+
+    drawTextLetterByLetter("Welcome soldier!\n");
     sleep(1);
-    disableRawMode();
-    printf("\n");
+    drawTextLetterByLetter("\n");
 
-    enableRawMode();
-    typeTextWithSound("Defeat the PROMPT INVADERS and come back a hero.\n");
+    drawTextLetterByLetter("Defeat the PROMPT INVADERS and come back a hero.\n");
     sleep(1);
-    disableRawMode();
-    printf("\n");
+    drawTextLetterByLetter("\n");
 
-    enableRawMode();
-    typeTextWithSound("Your operating system is depending upon you.\n");
+    drawTextLetterByLetter("Your operating system is depending upon you.\n");
     sleep(1);
-    disableRawMode();
-    printf("\n");
+    drawTextLetterByLetter("\n");
 
-    enableRawMode();
-    typeTextWithSound("Good luck.\n");
+    drawTextLetterByLetter("Good luck.\n");
     sleep(1);
-    disableRawMode();
-    printf("\n");
+    drawTextLetterByLetter("\n");
 
-    enableRawMode();
-    typeTextWithSound("Press enter to start.");
-    disableRawMode();
+    /*drawTextLetterByLetter("Press enter to start.");
+    sleep(1);
+    drawTextLetterByLetter("\n");
 
-    getchar();
+    while(getch()!='\n'){}*/
+
+    // Clean up
+    endwin();
 }
