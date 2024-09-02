@@ -1,0 +1,30 @@
+# Ignorar archivos y directorios generados por CLion
+.idea/
+cmake-build-debug/
+cmake-build-release/
+cmake-build-*
+
+# Ignorar archivos y directorios generados por Visual Studio Code
+.vscode/
+.vscode/*
+
+# Ignorar archivos y directorios generados por CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignorar archivos binarios y de compilación
+*.o
+*.obj
+*.so
+*.a
+*.out
+*.exe
+
+# Ignorar archivos de registro
+*.log
+
+# Ignorar archivos de configuración del sistema
+*.DS_Store
+*.directory
