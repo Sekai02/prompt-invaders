@@ -69,8 +69,5 @@ void gameOver()
 int main(void)
 {
     switchScene(SCENE_START_MESSAGE);
-
-    getch();
-    endwin();
     return 0;
 }

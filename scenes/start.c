@@ -39,7 +39,7 @@ void drawStartMessage()
     cbreak();
     noecho();
 
-    atexit((void (*)(void))endwin);
+    atexit((void (*)())endwin);
 
     drawTextLetterByLetter("Welcome soldier!\n");
     sleep(1);
