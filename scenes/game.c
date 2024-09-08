@@ -54,6 +54,12 @@ typedef struct MonsterShotNode
     struct MonsterShotNode *next;
 } MonsterShotNode;
 
+typedef struct Asteroid
+{
+    int pos_x, pos_y, vel_x, vel_y, size, index;
+    bool frame; // 0 -first frame, 1 - second frame
+} Asteroid;
+
 MonsterShotNode *monsterShots = NULL;
 
 #define SHOT_SPEED 50000
