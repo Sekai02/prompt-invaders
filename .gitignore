@@ -1,5 +1,6 @@
 # Ignorar archivos y directorios generados por CLion
 .idea/
+.idea/*
 cmake-build-debug/
 cmake-build-release/
 cmake-build-*
