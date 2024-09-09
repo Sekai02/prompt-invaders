@@ -18,7 +18,7 @@ typedef struct freeListNode
 freeListNode *firstFit(freeListNode *freeList, int size);
 freeListNode *bestFit(freeListNode *freeList, int size);
 freeListNode *worstFit(freeListNode *freeList, int size);
-int reserveMemoryBlock(freeListNode *freeList, int size);
-void freeMemoryBlock(freeListNode *freeList, int start, int size);
+int reserveMemoryBlock(freeListNode **freeList, int size);
+void freeMemoryBlock(freeListNode **freeList, int start, int size);
 
 #endif

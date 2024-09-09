@@ -19,7 +19,7 @@ freeListNode *firstFit(freeListNode *freeList, int size)
   if (current == NULL)
     return NULL;
 
-  while (current->size < size)
+  while (current != NULL && current->size < size)
     current = current->next;
   return current;
 }
@@ -72,9 +72,9 @@ freeListNode *worstFit(freeListNode *freeList, int size)
   return worstFit;
 }
 
-int reserveMemoryBlock(freeListNode *freeList, int size)
+int reserveMemoryBlock(freeListNode **freeList, int size)
 {
-  freeListNode *freeMem = firstFit(freeList, size);
+  freeListNode *freeMem = firstFit(*freeList, size);
   if (freeMem == NULL)
     return -1; // No memory available
   int start = freeMem->start;
@@ -84,34 +84,34 @@ int reserveMemoryBlock(freeListNode *freeList, int size)
   if (freeMem->size > 0)
     return start;
   freeListNode *previous = NULL;
-  freeListNode *current = freeList;
+  freeListNode *current = *freeList;
   while (current != freeMem)
   {
     previous = current;
     current = current->next;
   }
   if (previous == NULL)
-    freeList = freeMem->next;
+    *freeList = freeMem->next;
   else
     previous->next = freeMem->next;
   free(freeMem);
   return start;
 }
 
-void freeMemoryBlock(freeListNode *freeList, int start, int size)
+void freeMemoryBlock(freeListNode **freeList, int start, int size)
 {
   freeListNode *newNode = (freeListNode *)malloc(sizeof(freeListNode));
   newNode->start = start;
   newNode->size = size;
   newNode->next = NULL;
 
-  if (freeList == NULL)
+  if (*freeList == NULL)
   {
-    freeList = newNode;
+    *freeList = newNode;
     return;
   }
 
-  freeListNode *current = freeList;
+  freeListNode *current = *freeList;
   freeListNode *prev = NULL;
 
   while (current != NULL && current->start < start)
@@ -122,7 +122,7 @@ void freeMemoryBlock(freeListNode *freeList, int start, int size)
 
   newNode->next = current;
   if (prev == NULL)
-    freeList = newNode;
+    *freeList = newNode;
   else
     prev->next = newNode;
 

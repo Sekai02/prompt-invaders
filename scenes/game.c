@@ -611,11 +611,9 @@ void *handleMonsterShots(void *arg)
 void generateNewAsteroid()
 {
     int asteroidSize = rand() % 3 + 1; // Random size between 1 and 3
-    int memoryIndex = reserveMemoryBlock(asteroids_freeList, asteroidSize);
+    int memoryIndex = reserveMemoryBlock(&asteroids_freeList, asteroidSize);
     if (memoryIndex < 0)
-    {
         return; // No memory available
-    }
     AsteroidNode *newAsteroid = (AsteroidNode *)malloc(sizeof(AsteroidNode));
     int border = rand() % 4;
     switch (border)
@@ -682,6 +680,8 @@ void updateAsteroids()
             current = current->next;
             if (temp != NULL)
             {
+                GameMemory[temp->index][3] = false;
+                freeMemoryBlock(&asteroids_freeList, temp->index, temp->size);
                 free(temp);
             }
         }
