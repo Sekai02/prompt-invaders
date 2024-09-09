@@ -14,6 +14,8 @@ add_executable(prompt_invaders main.c
         system/gamestate.h
         scenes/gameover.c
         scenes/gameover.h
+        data_structures/memory.c
+        data_structures/memory.h
 )
 
 target_link_libraries(${PROJECT_NAME} ncurses)

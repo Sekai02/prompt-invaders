@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "../system/gamestate.h"
+#include "../data_structures/memory.h"
 
 #define PLAYER_START_X 40
 #define PLAYER_START_Y 20
@@ -22,7 +23,16 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 #define MONSTER_BASE_Y 0
 #define MONSTER_SCORE 100
 #define MONSTER_SHOT_SPEED (MONSTER_SPEED / 3)
+#define ASTEROID_SPEED 1000000 / 3
 #define MAX_MONSTER_SHOTS 100
+
+// this represents the memory of the game, each time an element of the game is created will reserve
+// a slot in the memory. This is for demostrate memory management algorithms and the use of a free lists
+// 0 -> monsters
+// 1 -> shots
+// 2 -> monsterShots
+// 3 -> asteroids
+bool GameMemory[250][4];
 
 typedef struct MonsterNode
 {
@@ -54,13 +64,19 @@ typedef struct MonsterShotNode
     struct MonsterShotNode *next;
 } MonsterShotNode;
 
-typedef struct Asteroid
+MonsterShotNode *monsterShots = NULL;
+
+typedef struct AsteroidNode
 {
     int pos_x, pos_y, vel_x, vel_y, size, index;
-    bool frame; // 0 -first frame, 1 - second frame
-} Asteroid;
+    bool frame;
+    struct AsteroidNode *next;
+} AsteroidNode;
 
-MonsterShotNode *monsterShots = NULL;
+AsteroidNode *asteroids = NULL;
+freeListNode *asteroids_freeList;
+
+void *handleAsteroids(void *arg);
 
 #define SHOT_SPEED 50000
 
@@ -82,6 +98,9 @@ void *handleDrawing(void *arg);
 void freeShots();
 void freeMonsters();
 void freeMonsterShots();
+void freeAsteroids();
+void initializeFreeList(freeListNode *freeList, int size);
+void destroyFreeList(freeListNode *freeList);
 
 void runGame()
 {
@@ -101,12 +120,17 @@ void runGame()
     pthread_t monsterThread;
     pthread_t monsterShootingThread;
     pthread_t collisionThread;
+    pthread_t asteroidThread;
     pthread_create(&drawingThread, NULL, handleDrawing, NULL);
     pthread_create(&movementThread, NULL, handlePlayerMovement, NULL);
     pthread_create(&shootingThread, NULL, handleShots, NULL);
     pthread_create(&monsterThread, NULL, handleMonsters, NULL);
     pthread_create(&monsterShootingThread, NULL, handleMonsterShots, NULL);
     pthread_create(&collisionThread, NULL, handleCollisions, NULL);
+    pthread_create(&asteroidThread, NULL, handleAsteroids, NULL);
+
+    asteroids_freeList = (freeListNode *)malloc(sizeof(freeListNode));
+    initializeFreeList(asteroids_freeList, 250);
 
     while (!isGameOver)
     {
@@ -120,12 +144,15 @@ void runGame()
     pthread_join(shootingThread, NULL);
     pthread_join(monsterThread, NULL);
     pthread_join(collisionThread, NULL);
+    pthread_join(asteroidThread, NULL);
     pthread_join(drawingThread, NULL);
 
     // Free linked lists
     freeShots();
     freeMonsters();
     freeMonsterShots();
+    freeAsteroids();
+    destroyFreeList(asteroids_freeList);
 
     saveMaxScore(maxScore);
     saveLastScore(score);
@@ -369,6 +396,20 @@ void *handleCollisions(void *arg)
             currentMonster = currentMonster->next;
         }
 
+        // Check for collisions between asteroids and the player
+        AsteroidNode *currentAsteroid = asteroids;
+        while (currentAsteroid != NULL)
+        {
+            if (currentAsteroid->pos_x <= playerX && playerX < currentAsteroid->pos_x + currentAsteroid->size &&
+                currentAsteroid->pos_y <= playerY && playerY < currentAsteroid->pos_y + currentAsteroid->size)
+            {
+                // Collision detected, game over
+                isGameOver = 1;
+                break;
+            }
+            currentAsteroid = currentAsteroid->next;
+        }
+
         // Check for collisions between monsters shots and the player
         MonsterShotNode *currentMonsterShot = monsterShots;
         while (currentMonsterShot != NULL)
@@ -389,6 +430,49 @@ void *handleCollisions(void *arg)
     return NULL;
 }
 
+void drawAsteroid(AsteroidNode *asteroid)
+{
+    if (asteroid->size == 1)
+    {
+        if (asteroid->frame)
+        {
+            mvprintw(asteroid->pos_y, asteroid->pos_x, "=");
+        }
+        else
+        {
+            mvprintw(asteroid->pos_y, asteroid->pos_x, "#");
+        }
+    }
+    else if (asteroid->size == 2)
+    {
+        if (asteroid->frame)
+        {
+            mvprintw(asteroid->pos_y, asteroid->pos_x, "/-");
+            mvprintw(asteroid->pos_y + 1, asteroid->pos_x, "-/");
+        }
+        else
+        {
+            mvprintw(asteroid->pos_y, asteroid->pos_x, "-\\");
+            mvprintw(asteroid->pos_y + 1, asteroid->pos_x, "\\-");
+        }
+    }
+    else if (asteroid->size == 3)
+    {
+        if (asteroid->frame == 0)
+        {
+            mvprintw(asteroid->pos_y, asteroid->pos_x, "·-\\");
+            mvprintw(asteroid->pos_y + 1, asteroid->pos_x, "| |");
+            mvprintw(asteroid->pos_y + 2, asteroid->pos_x, "\\-·");
+        }
+        else
+        {
+            mvprintw(asteroid->pos_y, asteroid->pos_x, "/-·");
+            mvprintw(asteroid->pos_y + 1, asteroid->pos_x, "| ·");
+            mvprintw(asteroid->pos_y + 2, asteroid->pos_x, "·-/");
+        }
+    }
+}
+
 void *handleDrawing(void *arg)
 {
     while (!isGameOver)
@@ -397,6 +481,14 @@ void *handleDrawing(void *arg)
 
         // Clear the screen
         clear();
+
+        // Draw the asteroids
+        AsteroidNode *currentAsteroid = asteroids;
+        while (currentAsteroid != NULL)
+        {
+            drawAsteroid(currentAsteroid);
+            currentAsteroid = currentAsteroid->next;
+        }
 
         // Draw the monster shots
         MonsterShotNode *currentMonsterShot = monsterShots;
@@ -516,6 +608,107 @@ void *handleMonsterShots(void *arg)
     return NULL;
 }
 
+void generateNewAsteroid()
+{
+    int asteroidSize = rand() % 3 + 1; // Random size between 1 and 3
+    int memoryIndex = reserveMemoryBlock(asteroids_freeList, asteroidSize);
+    if (memoryIndex < 0)
+    {
+        return; // No memory available
+    }
+    AsteroidNode *newAsteroid = (AsteroidNode *)malloc(sizeof(AsteroidNode));
+    int border = rand() % 4;
+    switch (border)
+    {
+    case 0:                                              // top border
+        newAsteroid->pos_x = rand() % COLS;              // Random x position
+        newAsteroid->pos_y = 0;                          // Start at the top of the screen
+        newAsteroid->vel_x = (rand() % 2 == 0) ? 1 : -1; // Random x velocity direction
+        newAsteroid->vel_y = 1;                          // Move downwards
+        break;
+    case 1:                                              // right border
+        newAsteroid->pos_x = COLS - 1;                   // Start at the rightmost column
+        newAsteroid->pos_y = rand() % LINES;             // Random y position
+        newAsteroid->vel_x = -1;                         // Move leftwards
+        newAsteroid->vel_y = (rand() % 2 == 0) ? 1 : -1; // Random y velocity direction
+        break;
+    case 2:                                 // bottom border
+        newAsteroid->pos_x = rand() % COLS; // Random x position
+        if (newAsteroid->pos_x == playerX && newAsteroid->pos_y == playerY)
+            newAsteroid->pos_x += 15;                    // avoids generating an asteroid right on the player
+        newAsteroid->pos_y = LINES - 1;                  // Start at the bottom of the screen
+        newAsteroid->vel_x = (rand() % 2 == 0) ? 1 : -1; // Random x velocity direction
+        newAsteroid->vel_y = -1;                         // Move upwards
+        break;
+    case 3:                                              // left border
+        newAsteroid->pos_x = 0;                          // Start at the leftmost column
+        newAsteroid->pos_y = rand() % LINES;             // Random y position
+        newAsteroid->vel_x = 1;                          // Move rightwards
+        newAsteroid->vel_y = (rand() % 2 == 0) ? 1 : -1; // Random y velocity direction
+        break;
+    default:
+        break;
+    }
+    newAsteroid->size = asteroidSize;
+    newAsteroid->frame = 0;
+    newAsteroid->next = asteroids;
+    newAsteroid->index = memoryIndex;
+    GameMemory[memoryIndex][3] = true;
+    asteroids = newAsteroid;
+}
+
+void updateAsteroids()
+{
+    pthread_mutex_lock(&mutex);
+    AsteroidNode *prev = NULL;
+    AsteroidNode *current = asteroids;
+    while (current != NULL)
+    {
+        current->pos_x += current->vel_x;
+        current->pos_y += current->vel_y;
+        current->frame = !current->frame;
+        // Remove the asteroid if it reaches one of the borders
+        if (current->pos_x < 0 || current->pos_x >= COLS || current->pos_y < 0 || current->pos_y >= LINES)
+        {
+            AsteroidNode *temp = current;
+            if (prev == NULL)
+            {
+                asteroids = current->next;
+            }
+            else
+            {
+                prev->next = current->next;
+            }
+            current = current->next;
+            if (temp != NULL)
+            {
+                free(temp);
+            }
+        }
+        else
+        {
+            prev = current;
+            current = current->next;
+        }
+    }
+    // Add a new asteroid with a 25% probability
+    int random = rand() % 4;
+    if (random == 0)
+    {
+        generateNewAsteroid();
+    }
+    pthread_mutex_unlock(&mutex);
+}
+
+void *handleAsteroids(void *arg)
+{
+    while (!isGameOver)
+    {
+        updateAsteroids();
+        usleep(ASTEROID_SPEED); // Adjust this value to control the asteroid speed
+    }
+    return NULL;
+}
 // Helper functions to free memory
 void freeShots()
 {
@@ -551,4 +744,34 @@ void freeMonsterShots()
         current = next;
     }
     monsterShots = NULL;
+}
+
+void freeAsteroids()
+{
+    AsteroidNode *current = asteroids;
+    while (current != NULL)
+    {
+        AsteroidNode *next = current->next;
+        free(current);
+        current = next;
+    }
+    asteroids = NULL;
+}
+
+void initializeFreeList(freeListNode *freeList, int size)
+{
+    freeList->start = 0;
+    freeList->size = size;
+    freeList->next = NULL;
+}
+
+void destroyFreeList(freeListNode *freeList)
+{
+    freeListNode *current = freeList;
+    while (current != NULL)
+    {
+        freeListNode *next = current->next;
+        free(current);
+        current = next;
+    }
 }
