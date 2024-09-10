@@ -1,19 +1,20 @@
-FROM archlinux:latest
+FROM alpine:latest
 
-RUN pacman -Sy --noconfirm && \
-  pacman -S --noconfirm base-devel && \
-  pacman -S --noconfirm gcc &&\
-  pacman -S --noconfirm cmake &&\
-  pacman -S --noconfirm ncurses &&\
-  pacman -S --noconfirm vim 
+# Instala las dependencias necesarias
+RUN apk update && \
+  apk add --no-cache build-base cmake ncurses-dev vim
 
+# Establece el directorio de trabajo
 WORKDIR /root/prompt-invaders
 
+# Copia el contenido del proyecto al contenedor
 COPY . /root/prompt-invaders
 
+# Construye el proyecto
 RUN mkdir -p build && \
   cd build && \
   cmake .. && \
   make
 
-CMD [ "./build/prompt_invaders" ]
+# Comando para ejecutar la aplicación
+CMD ["./build/prompt_invaders"]
