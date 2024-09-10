@@ -32,7 +32,8 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 // 1 -> shots
 // 2 -> monsterShots
 // 3 -> asteroids
-bool GameMemory[250][4];
+bool GameMemory[1000];
+freeListNode *freeList;
 
 typedef struct MonsterNode
 {
@@ -74,7 +75,6 @@ typedef struct AsteroidNode
 } AsteroidNode;
 
 AsteroidNode *asteroids = NULL;
-freeListNode *asteroids_freeList;
 
 void *handleAsteroids(void *arg);
 
@@ -129,8 +129,8 @@ void runGame()
     pthread_create(&collisionThread, NULL, handleCollisions, NULL);
     pthread_create(&asteroidThread, NULL, handleAsteroids, NULL);
 
-    asteroids_freeList = (freeListNode *)malloc(sizeof(freeListNode));
-    initializeFreeList(asteroids_freeList, 250);
+    freeList = (freeListNode *)malloc(sizeof(freeListNode));
+    initializeFreeList(freeList, 250);
 
     while (!isGameOver)
     {
@@ -152,7 +152,7 @@ void runGame()
     freeMonsters();
     freeMonsterShots();
     freeAsteroids();
-    destroyFreeList(asteroids_freeList);
+    destroyFreeList(freeList);
 
     saveMaxScore(maxScore);
     saveLastScore(score);
@@ -611,7 +611,7 @@ void *handleMonsterShots(void *arg)
 void generateNewAsteroid()
 {
     int asteroidSize = rand() % 3 + 1; // Random size between 1 and 3
-    int memoryIndex = reserveMemoryBlock(&asteroids_freeList, asteroidSize);
+    int memoryIndex = reserveMemoryBlock(&freeList, asteroidSize);
     if (memoryIndex < 0)
         return; // No memory available
     AsteroidNode *newAsteroid = (AsteroidNode *)malloc(sizeof(AsteroidNode));
@@ -651,7 +651,7 @@ void generateNewAsteroid()
     newAsteroid->frame = 0;
     newAsteroid->next = asteroids;
     newAsteroid->index = memoryIndex;
-    GameMemory[memoryIndex][3] = true;
+    GameMemory[memoryIndex] = true;
     asteroids = newAsteroid;
 }
 
@@ -680,8 +680,8 @@ void updateAsteroids()
             current = current->next;
             if (temp != NULL)
             {
-                GameMemory[temp->index][3] = false;
-                freeMemoryBlock(&asteroids_freeList, temp->index, temp->size);
+                GameMemory[temp->index] = false;
+                freeMemoryBlock(&freeList, temp->index, temp->size);
                 free(temp);
             }
         }
