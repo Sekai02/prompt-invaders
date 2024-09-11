@@ -1,4 +1,4 @@
-# **Promt Invaders**
+# **Prompt Invaders**
 O.S small project with some memory handling, threads, input & output.
 
 ![Title Screen](https://i.imgur.com/UlfHVtj.png)
